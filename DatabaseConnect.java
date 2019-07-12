@@ -1,4 +1,5 @@
-
+/*The code below sets up a connection with a MySql database. It then creates a bunch of strings of SQL code to send to the database. 
+This SQL code creates a table (if needed), inserts integers into the table, and queries the new table. That's all. 
 
 import java.sql.DriverManager;
 import java.sql.Connection;
