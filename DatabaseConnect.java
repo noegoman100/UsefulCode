@@ -25,30 +25,31 @@ public class DatabaseConnect {
         try {
             
             Class.forName(driver);
-            conn = DriverManager.getConnection(url,user,pass);
-            System.out.println("Connnected to database : " + db);
-            System.out.println(dots + "1");
+            conn = DriverManager.getConnection(url,user,pass); //Make a connection
+            System.out.println("Connnected to database : " + db); //won't make it here if connection throws
+            System.out.println(dots + "1"); //Divider
             Statement statement = conn.createStatement();
-            System.out.println(dots + "2");
-            //statement.executeUpdate(query0);
-            System.out.println(dots + "3");
-            statement.executeUpdate(query);
-            System.out.println(dots + "4");
-            statement.executeUpdate(query2);
-            statement.executeUpdate(query21);
-            System.out.println(dots + "5");
-            ResultSet resultSet = statement.executeQuery(query3);
-            System.out.println(dots + "6");
-            System.out.println(resultSet.getRow());
-            while (resultSet.next())
+            System.out.println(dots + "2"); //Divider
+            //statement.executeUpdate(query0); //Delete the table. Didn't work. 
+            System.out.println(dots + "3"); //Divider
+            statement.executeUpdate(query); //Create the table, if needed.
+            System.out.println(dots + "4"); //Divider
+            statement.executeUpdate(query2); //Add sample value
+            statement.executeUpdate(query21); //Add sample value
+            System.out.println(dots + "5"); //Divider
+            ResultSet resultSet = statement.executeQuery(query3); //Execute a Select Query
+            System.out.println(dots + "6"); //Divider
+            //System.out.println(resultSet.getRow()); //I'm not sure what this one did. Seems like nothing. 
+            while (resultSet.next()) //while there is another row to return
             {
               int id = resultSet.getInt("PersonID");
 
               // print the results
               System.out.println(id);
-            }
-            System.out.println(dots + "7");
-        } catch (SQLException e) {
+            }//End While
+            System.out.println(dots + "7"); //Divider
+        } //End Try Block 
+        catch (SQLException e) {
             System.out.println("SQLException: "+e.getMessage());
             System.out.println("SQLState: "+e.getSQLState());
             System.out.println("VendorError: "+e.getErrorCode());
